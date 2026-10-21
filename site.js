@@ -33,8 +33,9 @@ function render(filter) {
     const img = p.image
       ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">`
       : `<div class="placeholder">Photo coming soon</div>`;
+    const stamp = p.sold ? `<span class="stamp sold">Sold</span>` : "";
     card.innerHTML = `
-      ${img}
+      <div class="media">${img}${stamp}</div>
       <div class="card-body">
         <span class="tag">${esc(labels[p.category] || p.category)}</span>
         <h3>${esc(p.name)}</h3>
