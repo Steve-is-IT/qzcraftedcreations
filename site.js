@@ -46,12 +46,17 @@ function render(filter) {
   }
 }
 
+function select(filter) {
+  document.querySelectorAll(".chip").forEach(b => b.classList.toggle("is-active", b.dataset.filter === filter));
+  render(filter);
+}
+
 document.querySelectorAll(".chip").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".chip").forEach(b => b.classList.remove("is-active"));
-    btn.classList.add("is-active");
-    render(btn.dataset.filter);
-  });
+  btn.addEventListener("click", () => select(btn.dataset.filter));
+});
+
+document.querySelectorAll("[data-jump]").forEach(a => {
+  a.addEventListener("click", () => select(a.dataset.jump));
 });
 
 fetch("products.json", { cache: "no-cache" })

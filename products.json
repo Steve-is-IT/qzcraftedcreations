@@ -2,9 +2,18 @@
   "items": [
     {
       "name": "Charizard ex (Obsidian Flames 125/197)",
-      "category": "singles",
+      "category": "cards",
       "details": "Near mint, sleeved and toploaded.",
       "price": 45,
+      "image": "",
+      "stripe_link": "",
+      "sold": false
+    },
+    {
+      "name": "Hinged Pokeball, 80mm",
+      "category": "printed",
+      "details": "Opens and closes on a printed hinge. Sanded, primed and painted. Fits a 2 inch figure.",
+      "price": 18,
       "image": "",
       "stripe_link": "",
       "sold": false
@@ -19,17 +28,26 @@
       "sold": false
     },
     {
-      "name": "Hand painted Pikachu display stand",
-      "category": "crafted",
-      "details": "Holds one toploaded card. Made to order.",
-      "price": 20,
+      "name": "Master Ball, 80mm",
+      "category": "printed",
+      "details": "Hinged. Purple with painted M. Made to order, ships in about a week.",
+      "price": 22,
+      "image": "",
+      "stripe_link": "",
+      "sold": false
+    },
+    {
+      "name": "Toploader display stand, Pokeball base",
+      "category": "printed",
+      "details": "Holds one toploaded card upright. Pick any color.",
+      "price": 10,
       "image": "",
       "stripe_link": "",
       "sold": false
     },
     {
       "name": "Umbreon VMAX (Evolving Skies 215/203)",
-      "category": "singles",
+      "category": "cards",
       "details": "Alt art. Lightly played.",
       "price": 0,
       "image": "",

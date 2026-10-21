@@ -91,6 +91,33 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 16px 3rem; }
   text-decoration: none;
 }
 .button:hover { background: var(--accent-dark); }
+.button-alt { background: var(--text); }
+.button-alt:hover { background: #000; }
+.hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
+
+.prints {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+.prints p { color: var(--muted); }
+.prints-list { padding-left: 1.2rem; margin: 0 0 1.2rem; color: var(--text); }
+.prints-list li { margin: 0.25rem 0; }
+.prints-art { display: grid; place-items: center; }
+.ball.big { width: 180px; height: 180px; border-width: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+.ball.big::after { width: 44px; height: 44px; border-width: 8px; }
+@media (max-width: 720px) {
+  .prints { grid-template-columns: 1fr; padding: 1.4rem; }
+  .prints-art { order: -1; }
+  .ball.big { width: 120px; height: 120px; }
+  .ball.big::after { width: 30px; height: 30px; border-width: 6px; }
+}
 
 .shop-head {
   display: flex;

@@ -28,16 +28,16 @@ collections:
             summary: "{{fields.name}} ({{fields.price}})"
             collapsed: true
             fields:
-              - { label: Name, name: name, widget: string, hint: "Card name, set and number, or what the crafted piece is." }
+              - { label: Name, name: name, widget: string, hint: "Card name, set and number, or the printed item and its size." }
               - label: Category
                 name: category
                 widget: select
                 options:
-                  - { label: Singles, value: singles }
+                  - { label: Cards, value: cards }
                   - { label: Sealed, value: sealed }
-                  - { label: Crafted, value: crafted }
-                default: singles
-              - { label: Details, name: details, widget: string, required: false, hint: "Condition, notes, anything a buyer should know." }
+                  - { label: 3D Printed, value: printed }
+                default: cards
+              - { label: Details, name: details, widget: string, required: false, hint: "Card condition, or for prints: color, size, made to order, lead time." }
               - { label: Price (USD), name: price, widget: number, value_type: float, min: 0, step: 0.01, default: 0 }
               - { label: Photo, name: image, widget: image, required: false, hint: "Portrait photos around 800 by 1000 pixels look best." }
               - { label: Stripe payment link, name: stripe_link, widget: string, required: false, pattern: ["^(https://buy\\.stripe\\.com/\\S+)?$", "Must be a buy.stripe.com link, or leave blank."], hint: "Paste the link from Stripe. Leave blank to show Message to buy instead." }

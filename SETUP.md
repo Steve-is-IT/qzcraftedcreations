@@ -20,8 +20,8 @@ This is for the shop owner. Follow it once. After that, you only ever use the ad
 2. Click Sign in with GitHub, choose the option to use a personal access token, and paste your token.
 3. Under Shop, open Products. Each item has:
    - Name
-   - Category: Singles, Sealed or Crafted
-   - Details: condition, notes
+   - Category: Cards, Sealed or 3D Printed
+   - Details: card condition, or for prints the color, size and lead time
    - Price
    - Photo: upload straight from your phone
    - Stripe payment link: see step 3 below
@@ -36,7 +36,7 @@ Stripe runs the checkout. You never handle card numbers and the site never sees 
 
 1. Make an account at https://dashboard.stripe.com/register and finish the business and bank details so payouts work.
 2. For each item you want to sell online: Payment links, New, add a product with the name and price, and turn on "Collect customers' addresses" so you get a shipping address. For shipping, add a shipping rate on the link.
-3. For one of a kind cards, open the link's advanced options and set "Limit the number of payments" to 1 so it cannot sell twice.
+3. For one of a kind cards, open the link's advanced options and set "Limit the number of payments" to 1 so it cannot sell twice. For prints you make to order, leave it unlimited.
 4. Copy the link (it starts with buy.stripe.com) and paste it into the item's Stripe payment link field in the admin.
 5. When someone buys, Stripe emails you. Flip the item to Sold in the admin and ship it.
 
