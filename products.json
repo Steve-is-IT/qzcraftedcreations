@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Charizard ex (Obsidian Flames 125/197)",
+    "category": "singles",
+    "details": "Near mint, sleeved and toploaded.",
+    "price": 45,
+    "image": "",
+    "sold": false
+  },
+  {
+    "name": "Scarlet and Violet 151 Booster Bundle",
+    "category": "sealed",
+    "details": "Factory sealed, 6 packs.",
+    "price": 35,
+    "image": "",
+    "sold": false
+  },
+  {
+    "name": "Hand painted Pikachu display stand",
+    "category": "crafted",
+    "details": "Holds one toploaded card. Made to order.",
+    "price": 20,
+    "image": "",
+    "sold": false
+  },
+  {
+    "name": "Umbreon VMAX (Evolving Skies 215/203)",
+    "category": "singles",
+    "details": "Alt art. Lightly played.",
+    "price": 0,
+    "image": "",
+    "sold": true
+  }
+]
