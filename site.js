@@ -5,6 +5,8 @@ const grid = document.getElementById("grid");
 const empty = document.getElementById("empty");
 let products = [];
 
+const labels = { cards: "Cards", sealed: "Sealed", printed: "3D Printed" };
+
 function money(n) {
   return "$" + Number(n).toFixed(2);
 }
@@ -34,7 +36,7 @@ function render(filter) {
     card.innerHTML = `
       ${img}
       <div class="card-body">
-        <span class="tag">${esc(p.category)}</span>
+        <span class="tag">${esc(labels[p.category] || p.category)}</span>
         <h3>${esc(p.name)}</h3>
         ${p.details ? `<p class="meta">${esc(p.details)}</p>` : ""}
         <div class="card-foot">
