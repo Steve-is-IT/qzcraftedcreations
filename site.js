@@ -1,5 +1,5 @@
 // Renders the shop from products.json and the contact links from contact.json.
-// To update the shop, edit those two files. No code changes needed.
+// Both files are edited from the admin at /admin. No code changes needed.
 
 const grid = document.getElementById("grid");
 const empty = document.getElementById("empty");
@@ -9,23 +9,38 @@ function money(n) {
   return "$" + Number(n).toFixed(2);
 }
 
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+function buyButton(p) {
+  if (p.sold) return `<span class="sold">Sold</span>`;
+  if (p.stripe_link) {
+    return `<a class="buy" href="${esc(p.stripe_link)}" target="_blank" rel="noopener">Buy now</a>`;
+  }
+  return `<a class="buy buy-alt" href="#contact">Message to buy</a>`;
+}
+
 function render(filter) {
   const items = products.filter(p => filter === "all" || p.category === filter);
   grid.innerHTML = "";
   empty.hidden = items.length > 0;
   for (const p of items) {
     const card = document.createElement("article");
-    card.className = "card";
+    card.className = "card" + (p.sold ? " is-sold" : "");
     const img = p.image
-      ? `<img src="${p.image}" alt="${p.name}" loading="lazy">`
+      ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">`
       : `<div class="placeholder">Photo coming soon</div>`;
     card.innerHTML = `
       ${img}
       <div class="card-body">
-        <span class="tag">${p.category}</span>
-        <h3>${p.name}</h3>
-        ${p.details ? `<p class="meta">${p.details}</p>` : ""}
-        ${p.sold ? `<span class="sold">Sold</span>` : `<span class="price">${money(p.price)}</span>`}
+        <span class="tag">${esc(p.category)}</span>
+        <h3>${esc(p.name)}</h3>
+        ${p.details ? `<p class="meta">${esc(p.details)}</p>` : ""}
+        <div class="card-foot">
+          ${p.sold ? "" : `<span class="price">${money(p.price)}</span>`}
+          ${buyButton(p)}
+        </div>
       </div>`;
     grid.appendChild(card);
   }
@@ -39,16 +54,17 @@ document.querySelectorAll(".chip").forEach(btn => {
   });
 });
 
-fetch("products.json")
+fetch("products.json", { cache: "no-cache" })
   .then(r => r.json())
-  .then(data => { products = data; render("all"); })
+  .then(data => { products = data.items || []; render("all"); })
   .catch(() => { empty.textContent = "Could not load the shop. Try again later."; empty.hidden = false; });
 
-fetch("contact.json")
+fetch("contact.json", { cache: "no-cache" })
   .then(r => r.json())
-  .then(links => {
+  .then(data => {
     const box = document.getElementById("contact-links");
-    for (const l of links) {
+    for (const l of data.links || []) {
+      if (!l.url) continue;
       const a = document.createElement("a");
       a.href = l.url;
       a.textContent = l.label;

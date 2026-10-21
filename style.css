@@ -143,8 +143,30 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 16px 3rem; }
 .card-body { padding: 0.9rem; display: flex; flex-direction: column; gap: 0.35rem; flex: 1; }
 .card h3 { margin: 0; font-size: 1.05rem; }
 .card .meta { color: var(--muted); font-size: 0.9rem; }
-.card .price { font-weight: 700; font-size: 1.1rem; margin-top: auto; }
+.card-foot {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.card .price { font-weight: 700; font-size: 1.1rem; }
 .card .sold { color: var(--accent); font-weight: 600; }
+.card.is-sold img, .card.is-sold .placeholder { opacity: 0.55; }
+.buy {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.buy:hover { background: var(--accent-dark); }
+.buy-alt { background: var(--text); }
+.buy-alt:hover { background: #000; }
 .tag {
   display: inline-block;
   font-size: 0.75rem;

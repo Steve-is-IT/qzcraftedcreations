@@ -1,0 +1,58 @@
+# Sveltia CMS configuration for the admin at /admin.
+# Sign in with a GitHub personal access token. See SETUP.md.
+
+backend:
+  name: github
+  repo: Steve-is-IT/qzcraftedcreations
+  branch: main
+
+media_folder: images
+public_folder: images
+
+site_url: https://qzcraftedcreations.com
+display_url: https://qzcraftedcreations.com
+
+collections:
+  - name: shop
+    label: Shop
+    files:
+      - name: products
+        label: Products
+        file: products.json
+        format: json
+        fields:
+          - label: Items
+            name: items
+            widget: list
+            label_singular: Item
+            summary: "{{fields.name}} ({{fields.price}})"
+            collapsed: true
+            fields:
+              - { label: Name, name: name, widget: string, hint: "Card name, set and number, or what the crafted piece is." }
+              - label: Category
+                name: category
+                widget: select
+                options:
+                  - { label: Singles, value: singles }
+                  - { label: Sealed, value: sealed }
+                  - { label: Crafted, value: crafted }
+                default: singles
+              - { label: Details, name: details, widget: string, required: false, hint: "Condition, notes, anything a buyer should know." }
+              - { label: Price (USD), name: price, widget: number, value_type: float, min: 0, step: 0.01, default: 0 }
+              - { label: Photo, name: image, widget: image, required: false, hint: "Portrait photos around 800 by 1000 pixels look best." }
+              - { label: Stripe payment link, name: stripe_link, widget: string, required: false, pattern: ["^(https://buy\\.stripe\\.com/\\S+)?$", "Must be a buy.stripe.com link, or leave blank."], hint: "Paste the link from Stripe. Leave blank to show Message to buy instead." }
+              - { label: Sold, name: sold, widget: boolean, default: false, hint: "Turn on to mark as sold. It stays listed with a Sold tag." }
+
+      - name: contact
+        label: Contact links
+        file: contact.json
+        format: json
+        fields:
+          - label: Links
+            name: links
+            widget: list
+            label_singular: Link
+            summary: "{{fields.label}}"
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: url, widget: string, hint: "A web address, or mailto:you@example.com for email." }
